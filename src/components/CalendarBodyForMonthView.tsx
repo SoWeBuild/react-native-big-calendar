@@ -40,6 +40,7 @@ interface CalendarBodyForMonthViewProps<T extends ICalendarEventBase> {
   eventMinHeightForMonthView: number
   moreLabel: string
   sortedMonthView: boolean
+  onPressMoreLabel: () => void
 }
 
 function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
@@ -62,6 +63,7 @@ function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
   eventMinHeightForMonthView,
   moreLabel,
   sortedMonthView,
+  onPressMoreLabel,
 }: CalendarBodyForMonthViewProps<T>) {
   const { now } = useNow(!hideNowIndicator)
   const [calendarWidth, setCalendarWidth] = React.useState<number>(0)
@@ -199,18 +201,20 @@ function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
                     (elements, event, index, events) => [
                       ...elements,
                       index > maxVisibleEventCount ? null : index === maxVisibleEventCount ? (
-                        <Text
-                          key={index}
-                          style={[
-                            theme.typography.moreLabel,
-                            { marginTop: 2, color: theme.palette.moreLabel },
-                          ]}
-                        >
-                          {moreLabel.replace(
-                            '{moreCount}',
-                            `${events.length - maxVisibleEventCount}`,
-                          )}
-                        </Text>
+                        <TouchableOpacity onPress={onPressMoreLabel}>
+                          <Text
+                            key={index}
+                            style={[
+                              theme.typography.moreLabel,
+                              { marginTop: 2, color: theme.palette.moreLabel },
+                            ]}
+                          >
+                            {moreLabel.replace(
+                              '{moreCount}',
+                              `${events.length - maxVisibleEventCount}`,
+                            )}
+                          </Text>
+                        </TouchableOpacity>
                       ) : (
                         <CalendarEventForMonthView
                           key={index}
