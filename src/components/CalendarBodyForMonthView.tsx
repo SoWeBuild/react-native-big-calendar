@@ -40,7 +40,7 @@ interface CalendarBodyForMonthViewProps<T extends ICalendarEventBase> {
   eventMinHeightForMonthView: number
   moreLabel: string
   sortedMonthView: boolean
-  onPressMoreLabel?: () => void
+  onPressMoreLabel?: (date: Date) => void
 }
 
 function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
@@ -201,7 +201,12 @@ function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
                     (elements, event, index, events) => [
                       ...elements,
                       index > maxVisibleEventCount ? null : index === maxVisibleEventCount ? (
-                        <TouchableOpacity onPress={onPressMoreLabel} key={index}>
+                        <TouchableOpacity
+                          onPress={() =>
+                            date && onPressMoreLabel && onPressMoreLabel(date.toDate())
+                          }
+                          key={index}
+                        >
                           <Text
                             style={[
                               theme.typography.moreLabel,
