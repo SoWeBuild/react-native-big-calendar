@@ -40,7 +40,7 @@ interface CalendarBodyForMonthViewProps<T extends ICalendarEventBase> {
   eventMinHeightForMonthView: number
   moreLabel: string
   sortedMonthView: boolean
-  onPressMoreLabel: () => void
+  onPressMoreLabel?: () => void
 }
 
 function _CalendarBodyForMonthView<T extends ICalendarEventBase>({

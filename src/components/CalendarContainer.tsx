@@ -102,7 +102,7 @@ export interface CalendarContainerProps<T extends ICalendarEventBase> {
   sortedMonthView?: boolean
   moreLabel?: string
   isEventOrderingEnabled?: boolean
-  onPressMoreLabel: () => void
+  onPressMoreLabel?: () => void
 }
 
 function _CalendarContainer<T extends ICalendarEventBase>({
