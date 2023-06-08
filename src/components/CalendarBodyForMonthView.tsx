@@ -201,9 +201,8 @@ function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
                     (elements, event, index, events) => [
                       ...elements,
                       index > maxVisibleEventCount ? null : index === maxVisibleEventCount ? (
-                        <TouchableOpacity onPress={onPressMoreLabel}>
+                        <TouchableOpacity onPress={onPressMoreLabel} key={index}>
                           <Text
-                            key={index}
                             style={[
                               theme.typography.moreLabel,
                               { marginTop: 2, color: theme.palette.moreLabel },
