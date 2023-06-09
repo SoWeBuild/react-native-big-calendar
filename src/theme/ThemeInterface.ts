@@ -1,7 +1,7 @@
 // We don't use Material UI, but this theme structure is inspired by the theme.
 //
 // https://material-ui.com/customization/default-theme/#default-theme
-import { TextStyle } from 'react-native'
+import { FlexStyle, TextStyle } from 'react-native'
 
 import { DeepPartial } from '../utils/utility-types'
 
@@ -44,6 +44,7 @@ export interface ThemeInterface {
     moreLabel: Typography
   }
   eventCellOverlappings: readonly Palette[]
+  moreLabel: FlexStyle
 }
 
 export type PartialTheme = DeepPartial<ThemeInterface>

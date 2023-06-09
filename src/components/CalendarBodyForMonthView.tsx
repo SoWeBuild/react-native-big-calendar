@@ -206,6 +206,7 @@ function _CalendarBodyForMonthView<T extends ICalendarEventBase>({
                             date && onPressMoreLabel && onPressMoreLabel(date.toDate())
                           }
                           key={index}
+                          style={theme.moreLabel}
                         >
                           <Text
                             style={[
