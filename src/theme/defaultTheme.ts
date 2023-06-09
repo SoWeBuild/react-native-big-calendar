@@ -42,4 +42,5 @@ export const defaultTheme: ThemeInterface = {
       fontWeight: 'bold',
     },
   },
+  moreLabel: {},
 }
